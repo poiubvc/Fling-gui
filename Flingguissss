@@ -1,0 +1,264 @@
+
+#1 (Direct Link)12-28-2018, 05:02 PM (This post was last modified: 12-28-2018, 05:12 PM by JackIsTheBest15.)
+JackIsTheBest15
+Junior Member
+**
+Posts: 44
+Threads: 7
+Joined: Oct 2017
+Reputation: 22
+Hi there everyone I have a pretty buggy release today. It isn't completely the best script but it does what it intends to. All you do is type in the name of a man you want to kill (partial name support) and press kill. There is also an option to adjust the time that you spend on the target to kill so if it isn't working properly try to tamper with the time setting (default one setting). The only games that don't really work on ones that don't allow collision such as bubble simulator or survivor. Other games have patched body movers such as Jailbreak. Anyways enough talking here are a few gifs of it working and the GUI below. (R6 works better than R15)
+
+[Image: ?u=https%3A%2F%2Fi.gyazo.com%2F5a2f3605b...36acb8.gif]
+[Image: ?u=https%3A%2F%2Fi.gyazo.com%2F94ff2276e...68a44d.gif]
+
+[-]GUI
+ -- By JackMcJagger15
+local KillGUI = Instance.new("ScreenGui")
+local Frame = Instance.new("ImageLabel")
+local Frame_2 = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local Kill = Instance.new("TextButton")
+local TextButton_Roundify_12px = Instance.new("ImageLabel")
+local Target = Instance.new("TextBox")
+local TextBox_Roundify_12px = Instance.new("ImageLabel")
+local Exit = Instance.new("TextButton")
+local Time = Instance.new("TextBox")
+local TextBox_Roundify_12px_2 = Instance.new("ImageLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+--Properties:
+KillGUI.Name = "KillGUI"
+KillGUI.Parent = game.CoreGui
+
+Frame.Name = "Frame"
+Frame.Parent = KillGUI
+Frame.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame.BackgroundTransparency = 1
+Frame.Position = UDim2.new(0.0383211672, 0, 0.308764935, 0)
+Frame.Size = UDim2.new(0, 180, 0, 219)
+Frame.Image = "rbxassetid://2260429633"
+Frame.ImageColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+Frame.ScaleType = Enum.ScaleType.Slice
+Frame.SliceCenter = Rect.new(12, 12, 13, 13)
+Frame.Selectable = true
+Frame.Active = true
+Frame.Draggable = true
+
+Frame_2.Name = "Frame"
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame_2.BackgroundTransparency = 1
+Frame_2.Position = UDim2.new(0, 0, -0.041420117, 0)
+Frame_2.Size = UDim2.new(0, 180, 0, 36)
+Frame_2.Image = "rbxassetid://2260429633"
+Frame_2.ImageColor3 = Color3.new(0.8, 0.8, 0.8)
+Frame_2.ScaleType = Enum.ScaleType.Slice
+Frame_2.SliceCenter = Rect.new(12, 12, 13, 13)
+
+TextLabel.Parent = Frame_2
+TextLabel.BackgroundColor3 = Color3.new(0.8, 0.8, 0.8)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 0, 0.68350327, 0)
+TextLabel.Size = UDim2.new(0, 180, 0, 16)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = ""
+TextLabel.TextColor3 = Color3.new(0, 0, 0)
+TextLabel.TextSize = 14
+
+TextLabel_2.Parent = Frame_2
+TextLabel_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel_2.BackgroundTransparency = 1
+TextLabel_2.Position = UDim2.new(0, 0, 0.111111112, 0)
+TextLabel_2.Size = UDim2.new(0, 147, 0, 36)
+TextLabel_2.Font = Enum.Font.SciFi
+TextLabel_2.Text = "Kill GUI By JackMcJagger15"
+TextLabel_2.TextColor3 = Color3.new(0, 0, 0)
+TextLabel_2.TextSize = 14
+TextLabel_2.TextWrapped = true
+
+Kill.Name = "Kill"
+Kill.Parent = Frame
+Kill.BackgroundColor3 = Color3.new(1, 1, 1)
+Kill.BackgroundTransparency = 1
+Kill.BorderSizePixel = 0
+Kill.Position = UDim2.new(0.13333334, 0, 0.231177166, 0)
+Kill.Size = UDim2.new(0, 132, 0, 32)
+Kill.ZIndex = 2
+Kill.Font = Enum.Font.SciFi
+Kill.Text = "Kill"
+Kill.TextColor3 = Color3.new(1, 1, 1)
+Kill.TextSize = 14
+
+TextButton_Roundify_12px.Name = "TextButton_Roundify_12px"
+TextButton_Roundify_12px.Parent = Kill
+TextButton_Roundify_12px.BackgroundColor3 = Color3.new(1, 1, 1)
+TextButton_Roundify_12px.BackgroundTransparency = 1
+TextButton_Roundify_12px.Size = UDim2.new(1, 0, 1.00000024, 0)
+TextButton_Roundify_12px.Image = "rbxassetid://2260429633"
+TextButton_Roundify_12px.ImageColor3 = Color3.new(0.0823529, 0.0823529, 0.0823529)
+TextButton_Roundify_12px.ScaleType = Enum.ScaleType.Slice
+TextButton_Roundify_12px.SliceCenter = Rect.new(12, 12, 13, 13)
+
+Target.Name = "Target"
+Target.Parent = Frame
+Target.BackgroundColor3 = Color3.new(1, 1, 1)
+Target.BackgroundTransparency = 1
+Target.BorderSizePixel = 0
+Target.Position = UDim2.new(0.13333334, 0, 0.719581962, 0)
+Target.Size = UDim2.new(0, 132, 0, 44)
+Target.ZIndex = 3
+Target.Font = Enum.Font.SciFi
+Target.Text = "Target"
+Target.TextColor3 = Color3.new(1, 1, 1)
+Target.TextSize = 14
+
+TextBox_Roundify_12px.Name = "TextBox_Roundify_12px"
+TextBox_Roundify_12px.Parent = Target
+TextBox_Roundify_12px.BackgroundColor3 = Color3.new(1, 1, 1)
+TextBox_Roundify_12px.BackgroundTransparency = 1
+TextBox_Roundify_12px.Size = UDim2.new(1, 0, 1, 0)
+TextBox_Roundify_12px.Image = "rbxassetid://2260429633"
+TextBox_Roundify_12px.ImageColor3 = Color3.new(0.0823529, 0.0823529, 0.0823529)
+TextBox_Roundify_12px.ScaleType = Enum.ScaleType.Slice
+TextBox_Roundify_12px.SliceCenter = Rect.new(12, 12, 13, 13)
+
+Exit.Name = "Exit"
+Exit.Parent = Frame
+Exit.BackgroundColor3 = Color3.new(1, 1, 1)
+Exit.BackgroundTransparency = 1
+Exit.Position = UDim2.new(0.766666651, 0, -0.041420117, 0)
+Exit.Size = UDim2.new(0, 42, 0, 40)
+Exit.Font = Enum.Font.SciFi
+Exit.Text = "X"
+Exit.TextColor3 = Color3.new(0, 0, 0)
+Exit.TextSize = 20
+Exit.TextWrapped = true
+
+Time.Name = "Time"
+Time.Parent = Frame
+Time.BackgroundColor3 = Color3.new(1, 1, 1)
+Time.BackgroundTransparency = 1
+Time.BorderSizePixel = 0
+Time.Position = UDim2.new(0.172222227, 0, 0.431910694, 0)
+Time.Size = UDim2.new(0, 116, 0, 31)
+Time.ZIndex = 3
+Time.Font = Enum.Font.SciFi
+Time.Text = "1"
+Time.TextColor3 = Color3.new(1, 1, 1)
+Time.TextSize = 14
+
+TextBox_Roundify_12px_2.Name = "TextBox_Roundify_12px"
+TextBox_Roundify_12px_2.Parent = Time
+TextBox_Roundify_12px_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TextBox_Roundify_12px_2.BackgroundTransparency = 1
+TextBox_Roundify_12px_2.Position = UDim2.new(0, 0, 1.1920929e-07, 0)
+TextBox_Roundify_12px_2.Size = UDim2.new(1, 0, 1, 0)
+TextBox_Roundify_12px_2.Image = "rbxassetid://2260429633"
+TextBox_Roundify_12px_2.ImageColor3 = Color3.new(0.0823529, 0.0823529, 0.0823529)
+TextBox_Roundify_12px_2.ScaleType = Enum.ScaleType.Slice
+TextBox_Roundify_12px_2.SliceCenter = Rect.new(12, 12, 13, 13)
+
+TextLabel_3.Parent = Time
+TextLabel_3.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel_3.BackgroundTransparency = 1
+TextLabel_3.Position = UDim2.new(-0.146551728, 0, 1, 0)
+TextLabel_3.Size = UDim2.new(0, 152, 0, 26)
+TextLabel_3.Font = Enum.Font.SciFi
+TextLabel_3.Text = "Time on target"
+TextLabel_3.TextColor3 = Color3.new(1, 1, 1)
+TextLabel_3.TextSize = 14
+-- Scripts:
+
+Exit.MouseButton1Click:connect(function()
+KillGUI:Destroy()
+end)
+
+function GetPlayer(String)
+local Found = {}
+local strl = String:lower()
+if strl == "all" then
+for i,v in pairs(game.Players:GetPlayers()) do
+table.insert(Found,v)
+end
+elseif strl == "others" then
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name ~= game.Players.LocalPlayer.Name then
+table.insert(Found,v)
+end
+end
+else
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name:lower():sub(1, #String) == String:lower() then
+table.insert(Found,v)
+end
+end
+end
+return Found
+end
+
+Kill.MouseButton1Click:connect(function()
+for i,v in pairs(GetPlayer(Target.Text)) do
+local Target = game.Players:FindFirstChild("Predecoris")
+local Torso = game.Players.LocalPlayer.Character.HumanoidRootPart
+local SavedPos = Torso.CFrame
+local Active = true
+local TimeDelay = Time.Text
+local POWER = 9e5
+
+game:GetService('RunService').Stepped:connect(function()
+if Active == true then
+if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+game.Players.LocalPlayer.Character.Head.CanCollide = false
+game.Players.LocalPlayer.Character.Torso.CanCollide = false
+game.Players.LocalPlayer.Character["Left Leg"].CanCollide = false
+game.Players.LocalPlayer.Character["Right Leg"].CanCollide = false
+POWER = 9e5
+else
+if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+game.Players.LocalPlayer.Character.Head.CanCollide = false
+game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
+game.Players.LocalPlayer.Character.LowerTorso.CanCollide = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
+POWER = 9e4
+end
+end
+end
+end)
+
+local bambam = Instance.new("BodyThrust")
+bambam.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+bambam.Force = Vector3.new(POWER,0,POWER)
+bambam.Location = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+wait()
+local Still = Instance.new("BodyGyro", Torso)
+Still.P = 9e4
+Still.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
+Still.CFrame = Torso.CFrame
+local BodyVelocity = Instance.new("BodyVelocity", Torso)
+BodyVelocity.Velocity = Vector3.new(0,0.1,0)
+BodyVelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+game:GetService('RunService').Stepped:connect(function()
+if Active == true then
+Torso.CFrame = game.Players:FindFirstChild(v.Name).Character.HumanoidRootPart.CFrame
+end
+end)
+wait(TimeDelay)
+Active = false
+for i,v in pairs(Torso:GetChildren()) do
+if v:IsA("BodyThrust") then
+v:Destroy()
+wait()
+else
+if v:IsA("BodyVelocity") or v:IsA("BodyGyro") then
+wait()
+v:Destroy()
+end
+end
+end
+Torso.CFrame = SavedPos
+wait()
+Torso.CFrame = SavedPos
+end
+end)
